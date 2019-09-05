@@ -129,6 +129,7 @@ func recordToSink(sink EventSink, event *v1.Event, eventCorrelator *EventCorrela
 	eventCopy := *event
 	event = &eventCopy
 	result, err := eventCorrelator.EventCorrelate(event)
+	klog.Infof("event correlator result: %+v", result)
 	if err != nil {
 		utilruntime.HandleError(err)
 	}
